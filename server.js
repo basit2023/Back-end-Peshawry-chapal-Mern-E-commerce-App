@@ -16,7 +16,7 @@ const app = express();
 config();
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://chimerical-marzipan-5ac1d5.netlify.app',
   methods: 'GET, PUT, POST, DELETE',
   allowedHeaders: ['Content-Type', 'Authorization']
 };
