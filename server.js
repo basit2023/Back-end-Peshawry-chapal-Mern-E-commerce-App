@@ -20,7 +20,7 @@ const corsOptions = {
   methods: 'GET, PUT, POST, DELETE',
   allowedHeaders: ['Content-Type', 'Authorization']
 };
-app.use(express.static(path.join(__dirname, '../client/build')))
+app.use(express.static(path.join(__dirname, './client/build')))
 // Use the CORS middleware
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -31,7 +31,7 @@ app.use(express.json());
 connectDB();
 
 app.use('*', function(req, res){
-  res.sendFile(path.join(__dirname, '../client/build/index.html'))
+  res.sendFile(path.join(__dirname, './client/build/index.html'))
 })
 //Routing
 app.use('/user', Router);
