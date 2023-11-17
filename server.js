@@ -21,19 +21,19 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };
-app.use(express.static(path.join(__dirname, './client/build')))
+// app.use(express.static(path.join(__dirname, './client/build')))
 // Use the CORS middleware
 app.use(cors(corsOptions));
 app.use(express.json());
 //port 
 const PORT = process.env.PORT || 4000;
-app.use(express.json());
+
 //Connection to MongoDB 
 connectDB();
 
-app.use('*', function(req, res){
-  res.sendFile(path.join(__dirname, './client/build/index.html'))
-})
+// app.use('*', function(req, res){
+//   res.sendFile(path.join(__dirname, './client/build/index.html'))
+// })
 //Routing
 app.use('/user', Router);
 app.use('/product', router);
