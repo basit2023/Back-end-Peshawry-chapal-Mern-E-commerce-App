@@ -16,7 +16,7 @@ const app = express();
 config();
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://kind-pink-nightingale-sock.cyclic.app',
   methods: 'GET, PUT, POST, DELETE',
   allowedHeaders: ['Content-Type', 'Authorization']
 };
