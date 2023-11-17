@@ -6,16 +6,21 @@ import Router from './routes/userRouter.js';
 import router from './routes/productRouter.js';
 import CatagoryRouter from './routes/catagoryRouter.js';
 import cartRoutes from './routes/cardRouter.js';
-import path from 'path'
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 config();
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://candid-bonbon-81e3e8.netlify.app',
   methods: 'GET, PUT, POST, DELETE',
   allowedHeaders: ['Content-Type', 'Authorization']
 };
-app.use(express.static(path.join(__dirname, '../client/build')))
+app.use(express.static(path.join(__dirname, './client/build')))
 // Use the CORS middleware
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -24,8 +29,9 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 //Connection to MongoDB 
 connectDB();
-app.use('*',function(req,res){
-  res.sendFile(path.join(__dirname, '../client/build/index.html'))
+
+app.use('*', function(req, res){
+  res.sendFile(path.join(__dirname, './client/build/index.html'))
 })
 //Routing
 app.use('/user', Router);
