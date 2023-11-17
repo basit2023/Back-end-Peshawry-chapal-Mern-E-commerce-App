@@ -16,7 +16,7 @@ const app = express();
 config();
 
 const corsOptions = {
-  origin: 'https://candid-bonbon-81e3e8.netlify.app',
+  origin: 'http://localhost:3000',
   methods: 'GET, PUT, POST, DELETE',
   allowedHeaders: ['Content-Type', 'Authorization']
 };
