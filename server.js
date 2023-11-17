@@ -6,7 +6,11 @@ import Router from './routes/userRouter.js';
 import router from './routes/productRouter.js';
 import CatagoryRouter from './routes/catagoryRouter.js';
 import cartRoutes from './routes/cardRouter.js';
-import path from 'path'
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 config();
@@ -26,7 +30,7 @@ app.use(express.json());
 //Connection to MongoDB 
 connectDB();
 
-app.use('*',function(req,res){
+app.use('*', function(req, res){
   res.sendFile(path.join(__dirname, '../client/build/index.html'))
 })
 //Routing
