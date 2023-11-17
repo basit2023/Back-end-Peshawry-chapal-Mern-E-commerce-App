@@ -16,7 +16,7 @@ const app = express();
 config();
 
 const corsOptions = {
-  origin: 'https://kind-pink-nightingale-sock.cyclic.app',
+  origin: 'https://candid-bonbon-81e3e8.netlify.app/',
   methods: 'GET, PUT, POST, DELETE',
   allowedHeaders: ['Content-Type', 'Authorization']
 };
