@@ -1,6 +1,6 @@
 import userModel from "../models/userModel.js";
 import { hashPassword,comparePassword } from "../Auth/authHelper.js";
-import JWT from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import orderModel from "../models/orderModel.js";
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
@@ -66,7 +66,7 @@ export const registerController = async (req,res) =>{
 export const loginController = async (req, res) => {
     try {
       const { email, password } = req.body;
-  
+     
       // Validation
       if (!email || !password) {
         return res.status(400).send({
@@ -95,13 +95,13 @@ export const loginController = async (req, res) => {
       }
   
       // Generate a JWT token for the authenticated user
-      const token = await JWT.sign(
-        { _id: user._id, //email: user.email
+      const token = await jwt.sign(    
+        { _id: user._id,email: user.email
          },
-        process.env.JWT_SECRET || "thisisme123",
+        process.env.JWT_SECRET || 'thisisme123', 
         // { expiresIn: "24hr" }
       );
-    
+      console.log(token);
       res.status(200).send({
         success: true,
         message: "Login successful",
